@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023-06-18_Codewars_Kata8_Counting_sheep</title>
+</head>
+
+<body>
+    <script>
+
+        // Consider an array/list of sheep where some sheep may be missing from their place. 
+        // We need a function that counts the number of sheep present in the array 
+        // (true means present).
+
+        // For example,
+
+        // [true,  true,  true,  false,
+        //   true,  true,  true,  true ,
+        //   true,  false, true,  false,
+        //   true,  false, false, true ,
+        //   true,  true,  true,  true ,
+        //   false, false, true,  true]
+        // The correct answer would be 17.
+
+        // Hint: Don't forget to check for bad values like null/undefined
+
+        // My version
+
+        const countSheeps = arr => arr.reduce((acc, curVal) => acc + (curVal === true && 1), 0)
+
+        console.log(countSheeps(
+            [true, true, true, false,
+                true, true, true, true,
+                true, false, true, false,
+                true, false, false, true,
+                true, true, true, true,
+                false, false, true, true]
+        )
+        );
+
+        console.log(countSheeps(
+            [NaN, true,]
+        )
+        );
+
+
+        // Another good version
+
+        function countSheeps1(arrayOfSheeps) {
+            return arrayOfSheeps.filter(Boolean).length;    // I think that "Boolean" in this context
+                                                            // means " Boolean => Boolean===true 
+        }
+
+        console.log(countSheeps1(
+            [true, true, true, false,
+                true, true, true, true,
+                true, false, true, false,
+                true, false, false, true,
+                true, true, true, true,
+                false, false, true, true]
+        )
+        );
+
+        console.log(countSheeps1(
+            [NaN, true,]
+        )
+        );
+
+
+        // The same (Another good version) can be written in this way
+
+        const countSheeps3 = arr => arr.filter(s => s).length;  // I think " s => s"
+                                                                // means " s => s===true"
+
+        console.log(countSheeps3(
+            [true, true, true, false,
+                true, true, true, true,
+                true, false, true, false,
+                true, false, false, true,
+                true, true, true, true,
+                false, false, true, true]
+        )
+        );
+
+        console.log(countSheeps3(
+            [NaN, true,]
+        )
+        );
+
+
+    </script>
+</body>
+
+</html>
